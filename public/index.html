@@ -1,0 +1,34 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div yr-font="Georgia">
+      ABCDEFGHIJKMN
+    </div>
+    <script src="/js/jquery-2.2.0.min.js"></script>
+    <script>
+      function addCssByStyle(cssString){
+        var doc=document;
+        var style=doc.createElement("style");
+        style.setAttribute("type", "text/css");
+
+        if(style.styleSheet){// IE
+          style.styleSheet.cssText = cssString;
+          } else {// w3c
+          var cssText = doc.createTextNode(cssString);
+          style.appendChild(cssText);
+        }
+
+        var heads = doc.getElementsByTagName("head");
+        if(heads.length)
+        heads[0].appendChild(style);
+        else
+        doc.documentElement.appendChild(style);
+      }
+      $.post("http://localhost:8080/query", function(data) {
+        addCssByStyle("@font-face { font-family: \"" + data.name + "\"; src: url(\"" + data.src +"\") }");
+        $("[yr-font='Georgia']").css("font-family", data.name)
+      });
+    </script>
+  </body>
+</html>
