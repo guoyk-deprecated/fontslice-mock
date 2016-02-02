@@ -5,24 +5,24 @@ This project mock the main procedure to provide a slice of font and inject it in
 
 ## How To
 
-1. Install Sinatra
+* Install Sinatra
 
 ```
 sudo gem install sinatra
 ```
 
-2. Launch Target Site
+* Launch Target Site
 
 ```
 ruby server.rb
 ```
 
-3. Launch Provider
+* Launch Provider
 
 ```
 ruby font_server.rb
 ```
 
-4. Browse
+* Browse
 
 `http://localhost:4567/index.html`
